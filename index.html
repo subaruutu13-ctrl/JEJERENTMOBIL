@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEJERentMobil - Premium Car Rental</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <header id="header">
+        <nav>
+            <div class="logo">🚗 JEJERentMobil</div>
+            <ul class="nav-links">
+                <li><a href="javascript:void(0)" onclick="scrollToSection('home')">Home</a></li>
+                <li><a href="javascript:void(0)" onclick="scrollToSection('cars')">Cars</a></li>
+                <li><a href="javascript:void(0)" onclick="scrollToSection('booking')">Booking</a></li>
+                <li><a href="javascript:void(0)" onclick="scrollToSection('contact')">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>
+                Rental Mobil
+                <span class="highlight">Premium</span>
+            </h1>
+            <p>Dari city car hingga supercar, kami punya semua yang Anda butuhkan. Armada terlengkap, harga terbaik, pelayanan maksimal!</p>
+            <div class="hero-buttons">
+                <button onclick="scrollToSection('cars')" class="btn btn-primary">Lihat Koleksi</button>
+                <button onclick="scrollToSection('booking')" class="btn btn-secondary">Book Sekarang</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="stats">
+        <div class="stat-card fade-in">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Armada Mobil</div>
+        </div>
+        <div class="stat-card fade-in">
+            <div class="stat-number">1000+</div>
+            <div class="stat-label">Pelanggan Puas</div>
+        </div>
+        <div class="stat-card fade-in">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Customer Service</div>
+        </div>
+        <div class="stat-card fade-in">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Asuransi Lengkap</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="fade-in">
+            <h2 class="section-title">Mengapa Pilih Kami?</h2>
+            <p class="section-subtitle">Pengalaman rental mobil terbaik dengan layanan premium dan harga kompetitif</p>
+        </div>
+
+        <div class="features">
+            <div class="feature-card fade-in">
+                <div class="feature-icon">⚡</div>
+                <h3 class="feature-title">Proses Kilat</h3>
+                <p class="feature-text">Booking online instan! Verifikasi cepat tanpa ribet, mobil siap dalam 1 jam</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">💎</div>
+                <h3 class="feature-title">Armada Premium</h3>
+                <p class="feature-text">Dari city car hingga supercar! Semua terawat perfect dengan standar showroom</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">🔥</div>
+                <h3 class="feature-title">Harga Terbaik</h3>
+                <p class="feature-text">Dijamin termurah! Harga transparan tanpa biaya tersembunyi + diskon untuk member</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">🛡️</div>
+                <h3 class="feature-title">Full Insurance</h3>
+                <p class="feature-text">Asuransi all-risk untuk ketenangan Anda. Berkendara tanpa khawatir!</p>
+            </div>
+        </div>
+
+        <div class="fade-in">
+            <h2 class="section-title" id="cars">Koleksi Mobil Kami</h2>
+            <p class="section-subtitle">Pilih mobil impian Anda - dari yang ekonomis hingga supercar ekslusif</p>
+        </div>
+
+        <div class="filter-container fade-in">
+            <button class="filter-btn active" onclick="filterCars('all')">Semua Mobil</button>
+            <button class="filter-btn" onclick="filterCars('supercar')">Supercar & Exotic</button>
+            <button class="filter-btn" onclick="filterCars('luxury')">Luxury Premium</button>
+            <button class="filter-btn" onclick="filterCars('premium')">Premium</button>
+            <button class="filter-btn" onclick="filterCars('ekonomis')">Ekonomis</button>
+        </div>
+
+        <div class="cars-grid" id="carsContainer"></div>
+
+        <div class="booking-section fade-in" id="booking">
+            <h2 class="section-title">Reservasi Online</h2>
+            <p class="section-subtitle">Isi form di bawah dan dapatkan konfirmasi instant via WhatsApp!</p>
+            
+            <div class="booking-form">
+                <div class="loading-spinner" id="loadingSpinner">
+                    <div class="spinner"></div>
+                    <p style="margin-top: 1rem; color: var(--gray);">Memproses booking Anda...</p>
+                </div>
+                <div class="success-message" id="successMessage">
+                    ✅ Booking berhasil dikirim!<br>
+                    <small style="font-size: 0.9rem; opacity: 0.9;">Kami akan menghubungi Anda via WhatsApp segera.</small>
+                </div>
+                <div class="error-message" id="errorMessage">
+                    ❌ Terjadi kesalahan. Silakan coba lagi.
+                </div>
+                <form id="bookingForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name">Nama Lengkap *</label>
+                            <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">No. WhatsApp *</label>
+                            <input type="tel" id="phone" name="phone" placeholder="08xx-xxxx-xxxx" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="email@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="car">Pilih Mobil *</label>
+                        <select id="car" name="car" required>
+                            <option value="">-- Pilih Mobil --</option>
+                        </select>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="startDate">Tanggal Mulai *</label>
+                            <input type="date" id="startDate" name="startDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="endDate">Tanggal Selesai *</label>
+                            <input type="date" id="endDate" name="endDate" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="notes">Catatan Tambahan</label>
+                        <textarea id="notes" name="notes" placeholder="Contoh: Perlu driver, pick up lokasi, dll"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Kirim Reservasi</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <h3 class="footer-title">Hubungi Kami</h3>
+            <div class="footer-links">
+                <span>📱 WhatsApp: 081345792315</span>
+                <span>📧 info@jejerentmobil.com</span>
+                <span>📍 Jl. Contoh No. 123, Kota Anda</span>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 JEJERentMobil. Premium Car Rental Service.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="javascript:void(0)" onclick="openWhatsApp()" class="whatsapp-float" title="Chat via WhatsApp">
+        💬
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
